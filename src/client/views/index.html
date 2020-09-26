@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="apple-touch-icon" sizes="180x180" href="/src/client/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/src/client/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/src/client/images/favicon-16x16.png">
-  <link rel="manifest" href="/src/client/images/site.webmanifest">
-  <link rel="mask-icon" href="/src/client/images/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+  <link rel="manifest" href="../images/site.webmanifest">
+  <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
 <meta charset="UTF-8">
 <title>Travel Planner</title>
-<link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles/style.css">
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link rel="stylesheet" href="../styles/base.css">
 </head>
  <body>
 <div id = "app">
   <div class ="holder headline">
-    Travel Planner App
+    <h1>Travel Planner</h1>
   </div>
   <div class ="holder city">
-    <label for="city">Enter City of destination here</label>
-    <input type="text" id="city" placeholder="enter destination city here">
+    <label for="city">My trip to:</label>
+    <input type="text" id="city" placeholder="Enter destination city here">
   </div>
-  <div class ="holder feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <button id="generate" type = "submit"> Generate </button>
+  <div class ="holder depart">
+    <label for="departing">Departing:</label>
+    <input type="date" id="departdate" name="departdate">
+    <p></p>
+    <p></p>
+    <button id="savetrip" type = "submit"> save trip </button>
+    <button id="remove" type = "submit"> remove trip </button>
   </div>
   <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
+    <div class = "title">Trip Info</div>
    <div id = "entryHolder">
-   <div id = "date"></div> 
-   <div id = "city"></div>
-   <div id = "temp"></div>
-   <div id = "humidity"></div>
-   <div id = "content"></div>
+   <div id = "citystate"></div>
+   <div id = "typicalweather"></div>
+   <p>Typical weather for then is:</p>
+   <p>High: </p><div id = "hightemp"></div><p>, Low: </p>
+   <div id = "lowtemp"></div>
+   <div id = "weather"></div>
    </div>
   </div>
   </div>

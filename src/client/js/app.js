@@ -1,4 +1,6 @@
 /* Global Variables */
+//GeoNames Sample URL
+/* http://api.geonames.org/postalCodeLookupJSON?placename=Miami,Florida&username=lk2745 */
 
 const baseURL = "https://api.openweathermap.org/data/2.5/weather?zip=";
 
