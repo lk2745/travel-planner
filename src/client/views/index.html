@@ -18,26 +18,29 @@
   <div class ="holder headline">
     <h1>Travel Planner</h1>
   </div>
-  <div class ="holder city">
-    <label for="city">My trip to:</label>
-    <input type="text" id="city" placeholder="Enter destination city here">
+  <div class ="holder_city">
+    <label for="citystate">My trip to:</label>
+    <input type="text" id="citystate" maxlength=30 placeholder="Enter destination city and state here">
   </div>
-  <div class ="holder depart">
-    <label for="departing">Departing:</label>
+  <div class ="holder_depart">
+    <label for="departdate">Departing Date:</label>
     <input type="date" id="departdate" name="departdate">
     <p></p>
     <p></p>
     <button id="savetrip" type = "submit"> save trip </button>
-    <button id="remove" type = "submit"> remove trip </button>
+    <button id="removetrip" type = "submit"> remove trip </button>
   </div>
-  <div class ="holder entry">
+  <div class ="holder_entry">
     <div class = "title">Trip Info</div>
    <div id = "entryHolder">
-   <div id = "citystate"></div>
-   <div id = "typicalweather"></div>
+   <div id = "citystateHolder"></div>
+   <div id = "countryHolder"></div>
+   <div id = "longitudeHolder"></div>
+   <div id = "latitudeHolder"></div>
+   <div id = "numofDays"></div>
+   <div id = "typicalweatherHolder"></div>
    <p>Typical weather for then is:</p>
-   <p>High: </p><div id = "hightemp"></div><p>, Low: </p>
-   <div id = "lowtemp"></div>
+   <p>High: </p><div id = "hightemp"></div><p>, Low: </p><div id = "lowtemp"></div>
    <div id = "weather"></div>
    </div>
   </div>

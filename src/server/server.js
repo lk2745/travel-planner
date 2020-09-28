@@ -7,6 +7,9 @@ const express = require('express');
 // Start up an instance of app
 const app = express();
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 /* Dependencies */
 const bodyParser = require('body-parser');
 
@@ -36,23 +39,28 @@ function listening() {
 // Initialize all route with a callback function
 app.get('/all', getData);
 
-// Callback function to complete GET '/all'  Item 2. in Development Strategy
+// Callback function to complete GET '/all' 
 function getData(request, response) {
   response.send(projectData);
   console.log(projectData);
 }
 
-// POST route Item 2. in Development Strategy
-app.post('/weather', addWeather);
+// POST route 
+app.post('/geonames', addWeather);
 
 function addWeather(request, response) {
   console.log("server side data:", request.body);
   let newEntry = {
-    temp: request.body.temp,
+    countrycode: request.body.postalcodes[0].countryCode, 
+    longitude: request.bodypostalcodes[0].lng, 
+    latitude: request.bodypostalcodes[0].lat, 
+    departdate: departingdate
+    
+    /*temp: request.body.temp,
     date: request.body.date,
     response: request.body.response,
     city: request.body.city,
-    humidity: request.body.humidity
+    humidity: request.body.humidity*/
   }
   projectData = newEntry;
   console.log(projectData);

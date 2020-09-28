@@ -8,7 +8,7 @@
     "start": "node src/server/server.js"
   },
   "keywords": [
-    "Weather"
+    "Travel"
   ],
   "author": "Larry Keefer",
   "license": "ISC",
