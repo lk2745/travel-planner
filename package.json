@@ -1,11 +1,13 @@
 {
   "name": "travel-planner-app",
   "version": "1.0.0",
-  "description": "This is a travel planner app package.json file",
-  "main": "server.js",
+  "description": "This is a travel planner app to geodata and weather from API calls",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server/server.js"
+    "start": "node src/server/server.js",
+    "build-dev": "webpack-dev-server  --config webpack.dev.js --open",
+    "build-prod": "webpack --config webpack.prod.js"
   },
   "keywords": [
     "Travel"
@@ -34,6 +36,7 @@
     "style-loader": "^1.2.1",
     "terser-webpack-plugin": "^4.2.2",
     "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   }
 }

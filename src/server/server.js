@@ -1,3 +1,4 @@
+//Used code from Project 3
 // Setup empty JS object to act as endpoint for all routes
 let projectData = {};
 
@@ -23,7 +24,7 @@ const cors = require('cors');
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('./client/js'));
+app.use(express.static('dist'));
 
 // Decalare the  server port
 const port = 3000;
@@ -31,10 +32,15 @@ const port = 3000;
 // Spin up the server
 const server = app.listen(port, listening);
 
-// Callback to debug
+// Callback to console
 function listening() {
-  console.log("Server is up and running on port:", port);
+  console.log("Server Travel App is up and running on port:", port);
 }
+
+app.get('/', function (request, response) {
+  /*response.sendFile('dist/index.html'); once prod build*/
+  response.sendFile('./client/views/index.html');
+})
 
 // Initialize all route with a callback function
 app.get('/all', getData);
@@ -46,23 +52,12 @@ function getData(request, response) {
 }
 
 // POST route 
-app.post('/geonames', addWeather);
+app.post('/add', addPost);
 
-function addWeather(request, response) {
+function addPost(request, response) {
   console.log("server side data:", request.body);
-  let newEntry = {
-    countrycode: request.body.postalcodes[0].countryCode, 
-    longitude: request.bodypostalcodes[0].lng, 
-    latitude: request.bodypostalcodes[0].lat, 
-    departdate: departingdate
-    
-    /*temp: request.body.temp,
-    date: request.body.date,
-    response: request.body.response,
-    city: request.body.city,
-    humidity: request.body.humidity*/
-  }
-  projectData = newEntry;
+  
+  projectData[request.body.info] = request.body.data;
   console.log(projectData);
   response.send(projectData);
 }

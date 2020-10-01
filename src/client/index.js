@@ -1,10 +1,11 @@
 //TODO Import statements
-
-/*import { handleSubmit } from './js/formHandler'
-import { validURL} from './js/urlValidation'*/
+import {startApp} from './js/app'
 
 import logo from './images/lklogo.jpg';
-import newsbackgroundImg  from './images/global-news.jpg';
+
+//Image by Dariusz Sankowski from Pixabay
+//https://pixabay.com/photos/old-journey-adventure-photo-map-1130731/ 
+import defaultphoto from './images/defaultphoto.jpg';
 
 import './styles/base.scss'
 import './styles/footer.scss'
@@ -14,11 +15,14 @@ import './styles/header.scss'
 var logoImg = document.getElementById('logoImg');
 logoImg.src = logo;
 
-var mainImg = document.getElementById('mainImg');
-mainImg.src = newsbackgroundImg;
+var defphoto = document.getElementById('travelImg');
+defphoto.src = defphoto;
+
+window.addEventListener('DOMContentLoaded', startApp);
+
+
 
 //added export statements
 export {
-    handleSubmit,
-    validURL,
+    startApp,
 }
