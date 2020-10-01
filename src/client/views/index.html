@@ -11,32 +11,31 @@
   </div>
   <div class ="holder_city">
     <label for="citystate">My trip to:</label>
-    <input type="text" id="citystate" maxlength=30 placeholder="Enter destination city and state here">
+    <input type="text" id="citystate" maxlength=50 placeholder="Enter destination City and State/Country code here">
   </div>
   <div class ="holder_depart">
     <label for="departdate">Departing Date:</label>
     <input type="date" id="departdate" name="departdate">
     <p></p>
     <p></p>
-    <button id="savetrip" type = "submit"> save trip </button>
-    <button id="removetrip" type = "submit"> remove trip </button>
+    <button id="savetrip" type = "submit"> Save trip </button>
+    <button id="removetrip" type = "submit"> Remove trip </button>
   </div>
   <div class ="holder_entry">
     <div class = "title">Trip Info</div>
     <div id = "entryHolder">
-    <div id = "travelImg"></div>
-    <div id = "citystateHolder"></div><div id = "countryHolder"></div><div id = "daysuntildepart"></div>
-    <div id = "longitudeHolder"></div>
-    <div id = "latitudeHolder"></div>
-    <p>Typical weather for then is:</p>
-    <p>High: </p><div id = "hightemp"></div><p>, Low: </p><div id = "lowtemp"></div>
-    <div id = "typicalweatherHolder"></div>
+      <div><img id = "travelImg"></div>
+      <div id = "citystateHolder"></div><div id = "countryHolder"></div><div id = "daysuntildepart"></div>
+      <div id = "longitudeHolder"></div>
+      <div id = "latitudeHolder"></div>
+      <p>Typical weather for then is:</p>
+      <div id = "hightempHolder"></div><p> </p><div id = "lowtempHolder"></div>
+      <div id = "typicalweatherHolder"></div>
    </div>
   </div>
   </div>
-<script src="../js/app.js" type="text/javascript"></script>
 <footer>
-  <div><img id= "logoImg" alt="LK Logo" class="log"></div>
+  <div><img id= "logoImg" alt="LK Logo" class="logo"></div>
   <p>Udacity CAPSTONE Travel App Project</p>
 </footer>
 </body>

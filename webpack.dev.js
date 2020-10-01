@@ -17,6 +17,19 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
+    devServer: {
+        // webpack-dev-server setup
+        host: 'localhost',
+        port: 8080,
+        proxy: {
+            // the frontend code uses the backend to store
+            // data. webpack-dev-server fails at this. Hence
+            //redirecting the frontend api requests to a different port.
+            context: () => true,
+            target: "http://localhost:3000",
+            secure: false,
+        }
+    },
     optimization: {
         minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },

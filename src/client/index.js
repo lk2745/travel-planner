@@ -16,7 +16,7 @@ var logoImg = document.getElementById('logoImg');
 logoImg.src = logo;
 
 var defphoto = document.getElementById('travelImg');
-defphoto.src = defphoto;
+defphoto.src = defaultphoto;
 
 window.addEventListener('DOMContentLoaded', startApp);
 

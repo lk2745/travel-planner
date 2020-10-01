@@ -15,10 +15,18 @@ body {
     background: beige;
     font-family: 'Oswald';
     font-size: 22px;
-    background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
     margin: 0;
     color:black;
 }
+input {
+    background-color: white;
+    font-family: 'Oswald', sans-serif;
+    cursor: text;
+    font-size: 16px;
+    text-indent: 2px;
+    border-color: darkslategray;
+}
+
 
 html {
     scroll-behavior: smooth;
@@ -59,26 +67,34 @@ p {
 
 label {
     font-family: 'Oswald', sans-serif;
-    font-size: 18px;
-    font-weight: normal;
+    font-size: 24px;
+    font-weight:700;
 }
 
 button {
     font-family: 'Oswald', sans-serif;
     font-size: 18px;
     font-weight: normal;
+    padding: 0 6px;
     border: black;
     border-style: solid;
-    border-width: 1px;
-    border-radius: 10%;
-    background-color: white;
+    border-width: 2px;
+    border-radius: 100px;
+    background: white;
+    cursor: pointer;
+}
+.headline {
+    font-size: 64px;
 }
 
 #citystate {
     font-family: 'Oswald', sans-serif;
     font-size: 12px;
     font-weight: normal;
+    height: 20px;
+    width: 288px;
 }
+
 .holder_city {
     font-family: 'Oswald', sans-serif;
     font-size: 18px;
@@ -91,6 +107,10 @@ button {
     font-weight: normal;
 }
 
+#travelImg {
+    height: 50%;
+    width: 50%;
+}
 /* ---- Layout Rules ---- */
 main {
     margin: 10vh 1em 10vh;
@@ -110,7 +130,7 @@ section {
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
+    grid-auto-rows: minmax(80px, auto);
     /* grid-template-columns:  */
     height:100vh;
     background: beige;
@@ -150,43 +170,7 @@ button:focus {
 
 /* ---- Module Rules ---- */
 
-/* Navigation Styles*/
-.navbar__menu ul {
-    padding-left: 1em;
-    margin: 0;
-    text-align: left;
-}
 
-.navbar__menu li {
-    /* Change the display for responsive */
-    display: inline-flex;
-    padding: 1em;
-}
-
-.navbar__menu li .current a{
-    background-color: beige;
-    color: black;
-}
-
-.navbar__menu .menu__link {
-    /* Change the display for responsive */
-    display: flex;
-    font-weight: bold;
-    text-decoration: none;
-    color: #000;
-}
-
-.navbar__menu .menu__link:hover {
-    background: #333;
-    color: #fff;
-    transition: ease 0.3s all;
-}
-
-/* set the menu bar item with a different color */
-.navbar__menu .menu__link .current a {
-    background-color: beige;
-    color: black;
-}
 
 
 

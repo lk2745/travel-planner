@@ -38,8 +38,8 @@ function listening() {
 }
 
 app.get('/', function (request, response) {
-  /*response.sendFile('dist/index.html'); once prod build*/
-  response.sendFile('./client/views/index.html');
+  response.sendFile('dist/index.html'); 
+  /*response.sendFile('./client/views/index.html');*/
 })
 
 // Initialize all route with a callback function

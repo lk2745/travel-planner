@@ -6,13 +6,18 @@ footer {
     color: black;
     text-align: left;
     display: inline-flex;
+    height: 64px;
 }
 
 .logo {
-
+    align-content: flex-start;
+    height: 32px;
+    width: 32px;
+    }
 }
 
 footer p{
+    font-family: 'Oswald', sans-serif;
     color: black;
     font-style: italic;
     font-weight: bolder;
