@@ -220,6 +220,26 @@ const getWeatherData = async (lat, long, ddate, wkey)=>{
   }
 }
 
+/*Get Pixaby Image information from Geonames data */
+const getPixabay= async(data,key)=>{    
+  let q = encodeURI(data.city + " " + data.state); // data.state;
+  let pixabayURL = `https://pixabay.com/api/?key=${key}&safesearch=true&category=places&q=${q}`;
+  const res = await fetch(pixabayURL);
+  try {
+    const pixresults = await res.json();
+    if(pixresults.totalHits == 0){  //No results for city(placename) 
+      q = data.country;//convert country code to string for query
+      pixabayURL= `https://pixabay.com/api/?key=${key}&safesearch=true&category=places&q=${q}`;
+      const res2 = await fetch(pixabayURL);
+      const pixresults2 = await res2.json();
+      return pixresults2.hits[0].webformatURL;
+    } else{
+    return pixresults.hits[0].webformatURL;
+    }
+  } catch(error) {
+    console.log("error in getPic():: ", error);
+  }}
+
 
 /* Function to get Pixabay Image and then Update UI */
 const updateUIElement = async (date) => {
@@ -229,7 +249,6 @@ const updateUIElement = async (date) => {
      let pixData = clientData['geoData'];
      try {
        let pixhits = getPixabay(pixData,pixabayKey)
-       console.log(pixhits);
        return pixhits
      } catch (error) {
        console.log("Error from Pixabay API: ",error)
@@ -275,25 +294,7 @@ const updateUIElement = async (date) => {
 
 
 
-/*Get Pixaby Image information from Geonames data */
-const getPixabay= async(data,key)=>{    
-  let q = data.city // data.state;
-  let pixabayURL = `https://pixabay.com/api/?key=${key}&safesearch=true&category=places&q=${q}`;
-  const res = await fetch(pixabayURL);
-  try {
-    const pixresults = await res.json();
-    if(pixresults.totalHits == 0){  //No results for city(placename) 
-      q = data.country;//convert country code to string for query
-      pixabayURL= `https://pixabay.com/api/?key=${key}&safesearch=true&category=places&q=${q}`;
-      const res2 = await fetch(pixabayURL);
-      const pixresults2 = await res2.json();
-      return pixresults2.hits[0].webformatURL;
-    } else{
-    return pixresults.hits[0].webformatURL;
-    }
-  } catch(error) {
-    console.log("error in getPic():: ", error);
-  }}
+
 
   export { startApp }
 
