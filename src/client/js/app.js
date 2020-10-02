@@ -132,6 +132,22 @@ function calcNumofDays(ddate){
   return numofdays;
 }
 
+function lastYrdepDay(ddate){
+  let d = new Date(ddate);
+  let depdate = new Date(ddate);
+  depdate.setFullYear(d.getFullYear()-1);
+  return depdate.toISOString().slice(0,10);
+}
+
+
+function lastYrnextDay(ddate){
+  let n = new Date(ddate);
+  let ndate = new Date(ddate);
+  ndate.setFullYear(ndate.getFullYear()-1);
+  ndate.setDate(n.getDate()+1);
+  return ndate.toISOString().slice(0,10);
+}
+
 /* Function to POST data */
 const postData = async (url = '', data = {}) => {
   console.log("postData Function running", data);
@@ -168,13 +184,14 @@ const getWeatherData = async (lat, long, ddate, wkey)=>{
   let weatherbitURL = "http://api.weatherbit.io/v2.0/normals?";
 
   if (calcNumofDays(ddate) > 16){ //Historical  forecast
-    console.log(ddate);
-    let sdate = new Date(ddate);
-    let startDate = sdate.toISOString().slice(0,10);
-    let edate= new Date(sdate.getFullYear(),sdate.getMonth(),sdate.getDate()+1);
-    let endDate = edate.toISOString().slice(0,10);
-    weatherbitURL=`https://api.weatherbit.io/v2.0/history/daily?lat=${lat}&lon=${long}&start_date=${startDate}&end_date=${endDate}&units=I&key=${wkey}`;
-    const forecast = "normals";
+    console.log("this is ddate: ", ddate);
+    let startdate = lastYrdepDay(ddate);
+    console.log("this is startdate: ", startdate);
+    let enddate = lastYrnextDay(ddate);
+    console.log("this is enddate:", enddate);
+
+    weatherbitURL=`https://api.weatherbit.io/v2.0/history/daily?lat=${lat}&lon=${long}&start_date=${startdate}&end_date=${enddate}&units=I&key=${wkey}`;
+    const forecast = "history";
   }
   else{ // Daily Forecast
     weatherbitURL=`https://api.weatherbit.io/v2.0/forecast/daily?&lat=${lat}&lon=${long}&units=I&key=${wkey}`;
@@ -192,11 +209,11 @@ const getWeatherData = async (lat, long, ddate, wkey)=>{
     } else {
       // or use the daily forecast based on the number of days (16 or less) until the departure date 
       let i = calcNumofDays(ddate);
-      weatherres.high = wbitdata.data[i].high_temp;
-      weatherres.low = wbitdata.data[i].low_temp;
+      weatherres.high = wbitdata.data[i].max_temp;
+      weatherres.low = wbitdata.data[i].min_temp;
       weatherres.weather = wbitdata.data[i].weather.description;
     }
-    console.log(weatherres);
+    console.log("Weatherabit data", weatherres);
     return weatherres;
     } catch(error) {
     console.log("Error getWeatherData() ", error);
@@ -233,6 +250,7 @@ const updateUIElement = async (date) => {
     let hightemp = data['WeatherData'].wData.high;
     let lowtemp = data['WeatherData'].wData.low;
     let wdescription = data['WeatherData'].wData.weather;
+    let wprecip = data['WeatherData'].wData.rain;
 
     if (pixImgURL === undefined){
       document.getElementById("travelImg").setAttribute('src',defaultimg);
@@ -245,7 +263,13 @@ const updateUIElement = async (date) => {
     document.getElementById("latitudeHolder").innerHTML = `Latitude: ${finalLatitude}`;
     document.getElementById("hightempHolder").innerHTML = `High: ${hightemp}°F`;
     document.getElementById("lowtempHolder").innerHTML = `Low: ${lowtemp}°F`;
-    document.getElementById("typicalweatherHolder").innerHTML = `Outlook: ${wdescription}`;
+    if (wdescription !== undefined){
+      document.getElementById("typicalweatherHolder").innerHTML = `Outlook: ${wdescription}`;
+    }
+    if (wprecip !== undefined){
+      wprecip = wprecip*100;
+      document.getElementById("precipHolder").innerHTML = `Chance of rain is ${wprecip}%`
+    }
    })
 }
 
