@@ -73,6 +73,21 @@ Ran the jest test for the overall functionality of the handleSubmit function.
 
 \Front End Developer\Projects\travel-planner> `npm run test`
 
+> jest --no-cache --verbose
+
+ PASS  __test__/calcnumofdays.test.js
+  Testing the Calc Num of Days functionality
+    √ Testing the calcNumofDays() function (3 ms)
+
+ PASS  __test__/server.test.js
+  √ Gets the test endpoint (28 ms)
+
+Test Suites: 2 passed, 2 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        5.229 s
+Ran all test suites.
+
 
 ### Step 7 Service Worker Setup
 
