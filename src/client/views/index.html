@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Travel Planner</title>
-</head>
- <body>
-<div id = "app">
-  <div class ="holder headline">
-    <h1>Travel Planner</h1>
+  <head>
+  <meta charset="UTF-8">
+  <title>Travel Planner</title>
+  </head>
+  <body>
+  <div class = "container">
+    <div class ="header box">
+      <h1>Travel Planner</h1>
+    </div>
+    <div class = "content box">
+        <div class = "content-image"><img id = "travelImg">
+        </div>
+        <div class = "content-info">
+          <label for="citystate">My trip to:</label>
+          <input type="text" id="citystate" maxlength=50 placeholder="Enter destination City and State/Country code here">
+          <label for="departdate">Departing Date:</label>
+          <input type="date" id="departdate" name="departdate">
+          <br></br>
+          <button id="savetrip" type = "submit"> Save trip </button>
+          <button id="removetrip" type = "submit"> Remove trip </button>
+          <h4>Trip Info:</h4>
+          <div id = "citystateHolder"></div>
+          <div id = "countryHolder"></div><div id = "daysuntildepart"></div>
+          <div id = "longitudeHolder"></div>
+          <div id = "latitudeHolder"></div>
+          <h4>Typical weather for then is:</h4>
+          <div id = "hightempHolder"></div><p> </p><div id = "lowtempHolder"></div><p>  </p>
+          <div id = "typicalweatherHolder"></div><p>   </p>
+          <div id = "precipHolder"></div>
+          <div><img id = "weathericon"></div>
+        </div>
+    </div>    
+    <div class="footer"><img id= "logoImg" alt="LK Logo" class="logo"><p>Udacity CAPSTONE Travel App Project</p>
+    </div>
   </div>
-  <div class ="holder_city">
-    <label for="citystate">My trip to:</label>
-    <input type="text" id="citystate" maxlength=50 placeholder="Enter destination City and State/Country code here">
-  </div>
-  <div class ="holder_depart">
-    <label for="departdate">Departing Date:</label>
-    <input type="date" id="departdate" name="departdate">
-    <p></p>
-    <p></p>
-    <button id="savetrip" type = "submit"> Save trip </button>
-    <button id="removetrip" type = "submit"> Remove trip </button>
-  </div>
-  <div class ="holder_entry">
-    <div class = "resultsTitle">Trip Info:</div>
-    <div id = "entryHolder">
-      <div><img id = "travelImg"></div>
-      <div id = "citystateHolder"></div><div id = "countryHolder"></div><div id = "daysuntildepart"></div>
-      <div id = "longitudeHolder"></div>
-      <div id = "latitudeHolder"></div>
-      <p>Typical weather for then is:</p>
-      <div id = "hightempHolder"></div><p> </p><div id = "lowtempHolder"></div><p>  </p>
-      <div id = "typicalweatherHolder"></div><p>   </p>
-      <div id = "precipHolder"></div>
-      <div><img id = "weathericon"></div>
-   </div>
-  </div>
-  </div>
-<footer>
-  <div><img id= "logoImg" alt="LK Logo" class="logo"></div>
-  <p>Udacity CAPSTONE Travel App Project</p>
-</footer>
-</body>
+  </body>
 </html>

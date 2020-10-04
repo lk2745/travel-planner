@@ -1,11 +1,10 @@
 
-
-
 /* Header Styles */
-.page__header {
-    background: beige;
+.header {
+    background: white;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 5;
+    grid-area: hd;
 }

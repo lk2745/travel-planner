@@ -1,70 +1,38 @@
-/*
- *
- * CSS written based on SMACSS architecture.
- * To learn more, visit: http://smacss.com/
- * 
- * For simplicity, no reset or normalize is added. 
- * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
- *
-*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
-
-/* ---- Base Rules ---- */
-
-body {
-    background: beige;
-    font-family: 'Oswald';
-    font-size: 22px;
-    margin: 0;
-    color:black;
-}
-input {
-    background-color: white;
-    font-family: 'Oswald', sans-serif;
-    cursor: text;
-    font-size: 18px;
-    text-indent: 2px;
-    border-color: darkslategray;
-    border-width: 1px;
-}
-
-
-html {
-    scroll-behavior: smooth;
-}
 
 
 /* Typeography General*/
 h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 32px;
-    margin: 5em 1em;
-}
-
-@media only screen and (min-width: 35em){
-    h1 {
-        font-size: 64px;
-        margin: auto;
-        color: black;
-    }
+    font-size: 64px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 8px;
+    margin-right: 2px;
 }
 
 h2 {
-    border-bottom: 1px solid #cc1;
+    font-size: 32px;
     font-family: 'Oswald', Sans-Serif;
-    font-size: 3em;
+    color: black;
+}
+h3 {
+    font-size: 28px;
+    font-family: 'Oswald', Sans-Serif;
     color: black;
 }
 
 h4 {
-    font-size: 2em;    
+    font-size: 24px;
     font-family: 'Oswald', Sans-Serif;
+    font-weight: 700;
  }
 
 p {
-    line-height: 1em;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
     color: black;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 label {
@@ -90,66 +58,173 @@ button:hover {
     background-color: goldenrod;
 }
 
+
+html, body {
+    background: beige;
+    font-family: 'Oswald';
+    font-size: 22px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    color: black;
+}
+
+div {
+    display: inline;
+}
+
+input {
+    background-color: white;
+    font-family: 'Oswald', sans-serif;
+    cursor: text;
+    font-size: 14px;
+    text-indent: 2px;
+    border-color: darkslategray;
+    border-width: 1px;
+}
 .headline {
     font-size: 64px;
+    background-color: white;
+    grid-area: header;
+}
+
+.content {
+    grid-area: main;
+}
+
+.content-image {
+    float: left;
+    height: 300px;
+    width: 400px;
+    margin: 0px 8px 0 0;
+
+}
+
+.content-info{
+    float: right;
+    padding-top: 24px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    padding-left: 4px;
 }
 
 #citystate {
     font-family: 'Oswald', sans-serif;
-    font-size: 12px;
-    font-weight: normal;
+    font-size: 18px;
+    font-weight: 400;
     height: 20px;
     width: 288px;
 }
 
-.holder_city {
-    font-family: 'Oswald', sans-serif;
-    font-size: 18px;
-    font-weight: normal;
-}
-.resultstitle {
+.results-title {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: 32px
+    font-size: 32px;
+    padding-left: 8px;
+}
+
+.results {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    padding-left: 8px;
 }
 
 #departdate {
     font-family: 'Oswald', sans-serif;
-    font-size: 12px;
+    font-size: 18px;
     font-weight: normal;
 }
 
 #travelImg {
-    height: 50%;
-    width: 50%;
+    height: 288px;
+    width: 384px;
+    padding-top: 8px;
+    padding-right: 0;
+    padding-bottom: 4px;
+    padding-right: 2px;
 }
 
 #weathericon {
+    height: 40px;
+    width: 40px;
+}
+/* Footer Styles */
+.footer {
+    background: beige;
+    color: black;
+    text-align: left;
+    display: inline-flex;
+    height: 48px;
+    grid-area: footer;
+}
+
+footer.logo {
     height: 32px;
     width: 32px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
-/* ---- Layout Rules ---- */
-main {
-    margin: 10vh 1em 10vh;
-    background-color: beige;
+footer p{
+    font-family: 'Oswald', sans-serif;
+    color: black;
+    font-style: italic;
+    font-weight: bolder;
+    text-align: left;
+    grid-area: footer;
 }
 
-.main-hero {
-    min-height: 40vh;
-    padding-top: 3em;
+/* If screen is small */
+@media(max-width: 375px){
+    .container{
+      background: beige;  
+      display: grid;
+      grid-template-rows: 80px auto 64px;
+      grid-template-areas: 
+        "header" 
+        "main" 
+        "footer";
+    }
+}
+  
+/* If screen is medium */
+@media(min-width: 376px) and (max-width: 900px){
+    .container{
+        background: beige;   
+        display: grid;
+        grid-template-columns: 256px 256px 256x 256px;
+        grid-template-rows: 80px auto 64px;
+        grid-template-areas: 
+        "header header" 
+        "main main" 
+        "footer footer";
+    }
+}
+  
+/* If screen is large */
+@media(min-width: 901px){
+    .container{
+        background: beige;  
+        display: grid;
+        grid-template-columns: 256px 256px 256x 256px;
+        grid-template-rows: 80px auto  64px;
+        grid-template-areas: 
+        "header header header" 
+        "main main main" 
+        "footer footer footer";
+    }
 }
 
-section {
-    position: relative;
-    min-height: 80vh;
-}
 
 
-#app{
+
+
+/* #app{
     display: grid;
     grid-auto-rows: minmax(80px, auto);
-    /* grid-template-columns:  */
     height:100vh;
     background: beige;
     color: black;
@@ -157,20 +232,22 @@ section {
     grid-gap: 1em;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
-}
+} */
 
-/* Reset style for HTML element on active to have no border*/
+/* Reset style for HTML element on active to have no border
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
     outline: none;
-}
+}*/
+
+
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
     color: black; 
     font-family: 'Oswald', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
 
 } 
   
@@ -186,7 +263,7 @@ button:focus {
 
 }
 
-/* ---- Module Rules ---- */
+
 
 
 
