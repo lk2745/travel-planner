@@ -1,5 +1,6 @@
 //TODO Import statements
-import {startApp} from './js/app'
+import { startApp } from './js/app'
+
 
 import logo from './images/lklogo.jpg';
 

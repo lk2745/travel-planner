@@ -1,3 +1,8 @@
+import { calcNumofDays } from './utils'
+import { lastYrdepDay } from './utils'
+import { lastYrnextDay } from './utils'
+
+
 /* Global Variables */
 
 let clientData = {};
@@ -120,34 +125,6 @@ const getGeonames = async (geobaseURL, placename, geoUsername) => {
   }
 };
 
-/* Calcualate the number of days from departure and current day */
-function calcNumofDays(ddate){
-  let currentd = new Date(); // Today's date
-  let departd = new Date(ddate);
-  let departingt = departd.getTime();
-  let currentt = currentd.getTime();
-  let diffintime = departingt - currentt;
-  const dayinms = 1000 * 60 * 60 * 24 ;
-  const numofdays = Math.round(diffintime/dayinms)+1; 
-  return numofdays;
-}
-
-function lastYrdepDay(ddate){
-  let d = new Date(ddate);
-  let depdate = new Date(ddate);
-  depdate.setFullYear(d.getFullYear()-1);
-  return depdate.toISOString().slice(0,10);
-}
-
-
-function lastYrnextDay(ddate){
-  let n = new Date(ddate);
-  let ndate = new Date(ddate);
-  ndate.setFullYear(ndate.getFullYear()-1);
-  ndate.setDate(n.getDate()+1);
-  return ndate.toISOString().slice(0,10);
-}
-
 /* Function to POST data */
 const postData = async (url = '', data = {}) => {
   console.log("postData Function running", data);
@@ -212,6 +189,7 @@ const getWeatherData = async (lat, long, ddate, wkey)=>{
       weatherres.high = wbitdata.data[i].max_temp;
       weatherres.low = wbitdata.data[i].min_temp;
       weatherres.weather = wbitdata.data[i].weather.description;
+      weatherres.icon = wbitdata.data[i].weather.icon;
     }
     console.log("Weatherabit data", weatherres);
     return weatherres;
@@ -228,7 +206,7 @@ const getPixabay= async(data,key)=>{
   try {
     const pixresults = await res.json();
     if(pixresults.totalHits == 0){  //No results for city(placename) 
-      q = data.country;//convert country code to string for query
+      q = data.country;
       pixabayURL= `https://pixabay.com/api/?key=${key}&safesearch=true&category=places&q=${q}`;
       const res2 = await fetch(pixabayURL);
       const pixresults2 = await res2.json();
@@ -270,6 +248,8 @@ const updateUIElement = async (date) => {
     let lowtemp = data['WeatherData'].wData.low;
     let wdescription = data['WeatherData'].wData.weather;
     let wprecip = data['WeatherData'].wData.rain;
+    let wiconCode = data['WeatherData'].wData.icon;
+    let wiconImg = "images/icons/"+wiconCode+".png";
 
     if (pixImgURL === undefined){
       document.getElementById("travelImg").setAttribute('src',defaultimg);
@@ -284,10 +264,11 @@ const updateUIElement = async (date) => {
     document.getElementById("lowtempHolder").innerHTML = `Low: ${lowtemp}°F`;
     if (wdescription !== undefined){
       document.getElementById("typicalweatherHolder").innerHTML = `Outlook: ${wdescription}`;
+      document.getElementById("weathericon").setAttribute('src',wiconImg);
     }
     if (wprecip !== undefined){
       wprecip = wprecip*100;
-      document.getElementById("precipHolder").innerHTML = `Chance of rain is ${wprecip}%`
+      document.getElementById("precipHolder").innerHTML = `Chance of rain is ${wprecip}%`;
     }
    })
 }

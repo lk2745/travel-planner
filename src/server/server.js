@@ -26,7 +26,8 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static('dist'));
 
-// Decalare the  server port
+/* Moved to startup.js
+//Decalare the  server port
 const port = 3000;
 
 // Spin up the server
@@ -36,10 +37,14 @@ const server = app.listen(port, listening);
 function listening() {
   console.log("Server Travel App is up and running on port:", port);
 }
+*/
 
 app.get('/', function (request, response) {
   response.sendFile('dist/index.html'); 
-  /*response.sendFile('./client/views/index.html');*/
+})
+
+app.get('/test', async (request, response) => {
+  response.json({message: 'pass!'})
 })
 
 // Initialize all route with a callback function
@@ -61,3 +66,6 @@ function addPost(request, response) {
   console.log(projectData);
   response.send(projectData);
 }
+
+module.exports = app
+

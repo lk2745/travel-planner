@@ -62,8 +62,9 @@ h4 {
  }
 
 p {
-    line-height: 1.6em;
+    line-height: 1em;
     color: black;
+    font-weight: 500;
 }
 
 label {
@@ -84,6 +85,11 @@ button {
     background: white;
     cursor: pointer;
 }
+
+button:hover {
+    background-color: goldenrod;
+}
+
 .headline {
     font-size: 64px;
 }
@@ -101,6 +107,11 @@ button {
     font-size: 18px;
     font-weight: normal;
 }
+.resultstitle {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 32px
+}
 
 #departdate {
     font-family: 'Oswald', sans-serif;
@@ -112,6 +123,12 @@ button {
     height: 50%;
     width: 50%;
 }
+
+#weathericon {
+    height: 32px;
+    width: 32px;
+}
+
 /* ---- Layout Rules ---- */
 main {
     margin: 10vh 1em 10vh;

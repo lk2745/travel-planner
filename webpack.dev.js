@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -69,6 +70,11 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+            {from:'src/client/images/icons',to:'images/icons'},
+            ],
         }),
         new MiniCssExtractPlugin({filename: '[name].css'})
     ]
