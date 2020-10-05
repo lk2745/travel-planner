@@ -1,7 +1,7 @@
 # CAPSTONE Travel App Project
 
 ## Overview
-The project builds off of project 3 (weatherapp) and 4 (new-evaluate-article). This project at three Web APIs to geonames, weatherbit, and pixabay. 
+The project builds off of project 3 (weatherapp) and 4 (new-evaluate-article). This project requires three Web APIs to geonames, weatherbit, and pixabay. 
 
 ## Author
 Larry Keefer
